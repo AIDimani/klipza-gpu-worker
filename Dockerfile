@@ -10,11 +10,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # BtbN static FFmpeg — lgpl build includes NVENC via nv-codec-headers
 # If NVENC missing, switch to nonfree variant
 # Verify exact filename: curl -s https://api.github.com/repos/BtbN/FFmpeg-Builds/releases/latest | jq '.assets[].name'
-RUN curl -L https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-nonfree.tar.xz \
+RUN curl -L https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz \
     -o /tmp/ffmpeg.tar.xz \
     && tar -xJf /tmp/ffmpeg.tar.xz --strip-components=2 -C /usr/local/bin/ \
-       ffmpeg-master-latest-linux64-nonfree/bin/ffmpeg \
-       ffmpeg-master-latest-linux64-nonfree/bin/ffprobe \
+       ffmpeg-master-latest-linux64-gpl/bin/ffmpeg \
+       ffmpeg-master-latest-linux64-gpl/bin/ffprobe \
     && rm /tmp/ffmpeg.tar.xz \
     && chmod +x /usr/local/bin/ffmpeg /usr/local/bin/ffprobe
 
